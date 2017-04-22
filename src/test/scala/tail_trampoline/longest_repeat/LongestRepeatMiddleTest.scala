@@ -6,4 +6,6 @@ class LongestRepeatMiddleTest extends CheatStructureTests with InputParameterGen
   override protected def minPatterns = 20
   override protected def maxPatterns: Int = 60
   override protected def maxLengthOfSame = 200
+
+  override protected def implementationToTest: LongestRepeat = LongestRepeatTrampoline
 }

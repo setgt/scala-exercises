@@ -38,29 +38,30 @@ trait InputParameterGenerator {
 }
 
 trait CheatStructureTests extends PropSpecLike with GeneratorDrivenPropertyChecks with InputParameterGenerator {
+  protected def implementationToTest: LongestRepeat
 
-  property("LongestRepeatTailRec should handle large IEnumerables") {
+  property(s"${implementationToTest.getClass.getSimpleName} should handle large IEnumerables") {
     forAll(structureGenerator) {case struct @ CheatStructure(ints, _) =>
       println(ints.last)
       assert(IEnumeratorGenerator.resultFrom(struct) ===
-        LongestRepeatTailRec.firstLongestRepeat(IEnumeratorGenerator.enumeratorFrom(struct)))
+        implementationToTest.firstLongestRepeat(IEnumeratorGenerator.enumeratorFrom(struct)))
     }
   }
 
-  property("LongestRepeatTailRec should handle large CharSequences") {
+  property(s"${implementationToTest.getClass.getSimpleName} should handle large CharSequences") {
     forAll(structureGenerator) {case struct @ CheatStructure(ints, _) =>
       println(ints.last)
       assert(IEnumeratorGenerator.resultFrom(struct) ===
-        LongestRepeatTailRec.firstLongestRepeat(struct.toImmutableCharSequence))
+        implementationToTest.firstLongestRepeat(struct.toImmutableCharSequence))
     }
   }
 
   import Helpers._
-  property("LongestRepeatTailRec should handle large Iterables") {
+  property(s"${implementationToTest.getClass.getSimpleName} should handle large Iterables") {
     forAll(structureGenerator) {case struct @ CheatStructure(ints, _) =>
       println(ints.last)
       assert(IEnumeratorGenerator.resultFrom(struct) ===
-        LongestRepeatTailRec.firstLongestRepeat(struct.toImmutableCharSequence.toIterator))
+        implementationToTest.firstLongestRepeat(struct.toImmutableCharSequence.toIterator))
     }
   }
 

@@ -8,4 +8,5 @@ class LongestRepeatLargeTest extends CheatStructureTests with InputParameterGene
   override protected def maxPatterns: Int = 6000
   override protected def maxLengthOfSame = 20000
 
+  override protected def implementationToTest: LongestRepeat = LongestRepeatTailRec
 }
