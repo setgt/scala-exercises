@@ -1,6 +1,6 @@
 # Scala Exercises
 
-[![Build Status](https://travis-ci.org/aborg0/scala-exercises.svg?branch=no_solution)](https://travis-ci.org/aborg0/scala-exercises)
+[![Build Status](https://travis-ci.org/aborg0/scala-exercises.svg?branch=noSolution)](https://travis-ci.org/aborg0/scala-exercises)
 
 This repository contains some exercises to help getting familiar with various contexts in the context of Scala.
 
