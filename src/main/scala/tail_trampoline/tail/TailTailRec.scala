@@ -34,10 +34,10 @@ object TailTailRec extends Tail {
           else
             acc match {
               case Nil => Seq(ch.toChar.toString)
-              case "\n" :: Nil => Seq(ch.toChar.toString)
+              case "\n" :: Nil => Seq("", ch.toChar.toString).takeRight(n)
               case head :: Nil => Seq(head + ch.toChar.toString)
-              case head :: tail => if (tail.last == "\n") head :: tail.init ++ Seq(ch.toChar.toString)
-                                   else head :: tail.init ++ Seq(tail.last + ch.toChar.toString)
+              case head :: tail => (if (tail.last == "\n") head :: tail.init ++ Seq(ch.toChar.toString)
+                                   else head :: tail.init ++ Seq(tail.last + ch.toChar.toString)).takeRight(n)
             }
 
         helper(nextAcc)
