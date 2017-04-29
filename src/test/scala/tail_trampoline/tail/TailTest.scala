@@ -11,7 +11,7 @@ import org.scalactic.TraversableEqualityConstraints
 /**
   */
 class TailTest extends PropSpec with TableDrivenPropertyChecks with TraversableEqualityConstraints {
-  private val implementations = Table("implementations", TailRec, TailTailRec, TailTrampoline)
+  private val implementations = Table("implementations", /*TailRec, */TailTailRec/*, TailTrampoline*/)
   private val concreteExamples = Table(("n", "content", "expected"),
     (0, "", Seq.empty[String]),
     (0, "\n", Seq.empty[String]),
@@ -25,6 +25,10 @@ class TailTest extends PropSpec with TableDrivenPropertyChecks with TraversableE
     (2, "", Seq("")),
     (2, "\n", Seq("", "")),
     (2, "a", Seq("a")),
+    (2, "\na", Seq("","a")),
+    (2, "ab", Seq("ab")),
+    (3, "a\n", Seq("a", "")),
+    (4, "a\nb", Seq("a", "b")),
     (2, "Hello\nWorld\n", Seq("World",""))
   )
 
