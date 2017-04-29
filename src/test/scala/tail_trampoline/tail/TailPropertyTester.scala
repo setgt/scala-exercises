@@ -48,11 +48,15 @@ trait TailPropertyTester extends PropSpecLike with GeneratorDrivenPropertyChecks
 
   property("lastNLines property small") {
     forAll(smallGenerator) { (str) => {
+      //      whenever(str.forall(c => (c >= ' ' && c <= 'z') || c == '\n')) {
       println(str.length)
       forAll(Gen.chooseNum(0, 14)) { n => {
-        testString(str, n)
+        whenever(n >= 0) {
+          testString(str, n)
+        }
       }
       }
+      //        }
     }
     }
   }
