@@ -8,7 +8,7 @@ object TailTailRec extends Tail {
   override def lastNLines(n: Int, is: InputStream): Seq[String] = {
     @tailrec
     def helper(acc: (Int, Seq[String])): (Int, Seq[String]) = {
-      implicit def intToChar(i: Int) = if (i < 0) "" else i.toChar.toString
+      implicit def int2string(i: Int) = if (i < 0) "" else i.toChar.toString
       implicit def bool2int(b: => Boolean) = if (b) 1 else 0
       if (n == 0) (0, Seq[String]())
       else {
